@@ -1,4 +1,4 @@
-Copy
+
 
 <?php
 // Read the variables sent via POST from our API
