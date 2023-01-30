@@ -1,12 +1,27 @@
 <?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "bodaboda";
+$dbname= new mysqli($servername, $username, $password,$dbname); 
+require_once('Lipa-Mpesa.php');
+
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-require_once('Lipa-Mpesa.php');
+
 
 if (isset($_POST['pay'])) {
 	$phonenumber=$_POST['phonenumber'];
-	$amount=100;
+	$np=$_POST['np'];
+	
+	$result=$dbname->query("SELECT `paymentdetails_id` FROM `ownerdetails` WHERE  `numberplate` = '$np'" );
+	$row= mysqli_fetch_array($result);
+	$id = $row['paymentdetails_id'];
+	$result=$dbname->query("SELECT `amount` FROM `paymentamount` WHERE  `id` = '$id'" );
+	$rows = mysqli_fetch_array($result);
+	$amount= $rows['amount'];
 	$accRef="Lipa Ushuru";
 	 $access_token = accessTokenGenerator();
 	 mpesaSendMoney($phonenumber, $amount, $accRef, $access_token );

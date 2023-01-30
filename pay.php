@@ -18,8 +18,7 @@ if(isset($_GET['payplan']))
 
   if ($payamount == "Daily")
   {
-   echo '<script>alert("you shall pay KSH100")</script>';
-   header("Refresh: 0.5; url=phonenumber.php");
+   header("Refresh: 0.5; url=phonenumber.php?payplan=$PaymentPlan");
  
    
   }elseif ($payamount == "Weekly")

@@ -16,16 +16,18 @@
   <style>
 
 form {
- display: inline-block;
+  display: inline-block;
  border: 5px solid black;
- padding-top :2%;
- margin-left: 5%;
-
-
+ padding-top :1%;
+ margin-top:10%;
+ width:40%;
+margin-left:450px;
+border-radius: 25px;
 }
-div{
-  margin-top: 5%;
-  margin-left: 7px;
+
+.numberplate{
+  border-radius: 20px;
+
 }
 
 
@@ -39,16 +41,15 @@ div{
 <div id= mydiv>
 <form action="validation.php" method="post" id ="thisform">
   <div class="form-group">
-  <b><h2>Kindly input your numberplate below:</h2></b>
+  <b><h2 style="margin-left: 20px">Kindly input your numberplate below:</h2></b><br>
   
-  <div class="container">
- <input type="text" class="form-control" name="numberplate" id="numberplate" placeholder="numberplate" required> <br><br>
-   
-<button type="submit" class="btn btn-info" name="submit" id="submit" >Submit</button><br>
+  <input style="margin-left: 2px" type="text" class="form-control" name="numberplate" id="numberplate" placeholder="numberplate" required> <br><br>
+
+<button style="margin-left: 30px" type="submit" class="btn btn-info" name="submit" id="submit" >Submit</button><br>
  
-    
+
   </div>
-  </div>
+
  
 </form>
 </div>

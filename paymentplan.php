@@ -39,16 +39,17 @@ if(isset($_GET['nplate']))
   <style>
 
 form {
-  display: inline-block;
+ display: inline-block;
  border: 5px solid black;
  padding-top :1%;
- margin-left: 5%;
+ margin-top:10%;
+ width:40%;
+margin-left:450px;
+border-radius: 25px;
+
 
 }
-div{
-  margin-top: 3%;
-  margin-left: 7px;
-}
+
 
 </style>
 
@@ -59,29 +60,31 @@ div{
 <form action="paymentplan.php" method="post">
   <div class="form-group">
   <input type="text" value="<?php echo $nplate1;?>" name="nplate1" hidden /></td>
-  <div class="container">
-  <b><h2>Choose a payment plan below:</h2></b>
 
-  <table style="margin-left: 10px;" class="striped-columns border">
- <tbody>                   
+  <b><h3  style="margin-left: 40px">Choose a payment plan below:</h3></b><br>
+  <table style="margin-left: 40px;" class="striped-columns border">
 <tr>
   <td>Daily</td>
-  <td><input type="radio" value="Daily" name="Daily" id="Daily" /></td>
- </tr><br>
+  <td><input type="radio" value="1" name="Daily" id="Daily" /></td>
+  </tr>
  <tr>
  <td>Weekly</td>
- <td><input type="radio" value="Weekly" name="Daily" id="Weekly" /></td>
-</tr><br>
+ <td><input type="radio" value="2" name="Daily" id="Weekly" /></td>
+
+</tr>
  <tr>
   <td>Monthly</td>
- <td><input type="radio" value="Monthly" name="Daily" id="Monthly" /></td>
+  <td><input type="radio" value="3" name="Daily" id="Monthly" /></td>
  </tr>
 </tbody>
-</table><br>
- <button type="submit" class="btn btn-success" name="submit" id="submit">Submit</button><br>
+</table>
+<br>
+ <button  style="margin-left: 40px" type="submit" class="btn btn-success" name="submit" id="submit">Submit</button><br>
  
-  </div>
+
  </div>
+
+
 
 
   <?php
@@ -92,10 +95,10 @@ $nplate1 = $_POST['nplate1'];
 
 
 
-$sql = "UPDATE ownerdetails SET paymentdetails= '$PaymentPlan' WHERE numberplate='$nplate1'";
+$sql = "UPDATE ownerdetails SET paymentdetails_id= '$PaymentPlan' WHERE numberplate='$nplate1'";
   if ($dbname->query($sql) === TRUE) {
     echo '<script>alert("Success! The payment plan has been set")</script>';
-    header("Refresh: 0.5; url=phonenumber.php?payplan=$PaymentPlan");
+    header("Refresh: 0.5; url=phonenumber.php?payplan=$PaymentPlan&np=$nplate1");
  
 } else {
 echo "Error: " . $sql . "<br>" . $dbname->error;

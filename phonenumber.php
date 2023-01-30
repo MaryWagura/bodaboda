@@ -1,10 +1,10 @@
 <?php
 
-$payplan1;
+$nplate1;
 if(isset($_GET['payplan']))
 { 
-   $payplan1= $_GET['payplan'];
-    //echo $payamount;
+   $np = $_GET['np'];
+  // echo $nplate1;
   }
 
 
@@ -30,10 +30,13 @@ if(isset($_GET['payplan']))
   <style>
 
 form {
- display: inline-block;
+  display: inline-block;
  border: 5px solid black;
- padding-top :2%;
- margin-left: 5%;
+ padding-top :1%;
+ margin-top:10%;
+ width:40%;
+margin-left:450px;
+border-radius: 25px;
 
 
 }
@@ -56,27 +59,17 @@ div{
 <form action="push.php" method="post" id ="thisform">
   <div class="form-group">
   <b><h2>Kindly input your phone number:</h2></b>
-  <input type="text" value="<?php echo $payplan1;?>" name="payplan1" hidden /></td>
+    <input type="text" value="<?php echo $payplan1;?>" name="payplan1" hidden /></td>
+    <input type="text" value="<?php echo $np;?>" name="np" hidden /></td>
 
-  
-  <div class="container">
 
- <input type="text" class="form-control" name="phonenumber" id="phonenumber" placeholder="phonenumber" required> <br><br>
+
+ <input type="text" class="form-control" name="phonenumber" id="phonenumber" placeholder="07" required> <br><br>
    
 <button type="submit" class="btn btn-info" name="pay" id="pay" >Pay</button><br>
 
  
-  //if (isset($_POST['pay'])) {
- //   $phonenumber=$_POST['phonenumber'];
- ///   echo $phonenumber;
- //   $payplan1 = $_POST['payplan1'];
- //   header("Refresh: 0.5; url=push.php?userphone=$phonenumber");
 
-  //}
-
- 
-    
-  </div>
   </div>
  
 </form>
