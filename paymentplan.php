@@ -10,7 +10,7 @@ $username = "root";
 $password = "";
 $dbname = "bodaboda";
 
-$numberplate = $_SESSION['numberplate'];
+// $numberplate = $_SESSION['numberplate'];
 
 $dbname= new mysqli($servername, $username, $password,$dbname); 
 
@@ -95,7 +95,7 @@ $nplate1 = $_POST['nplate1'];
 $sql = "UPDATE ownerdetails SET paymentdetails= '$PaymentPlan' WHERE numberplate='$nplate1'";
   if ($dbname->query($sql) === TRUE) {
     echo '<script>alert("Success! The payment plan has been set")</script>';
-    header("Refresh: 0.5; url=pay.php?payplan=$PaymentPlan");
+    header("Refresh: 0.5; url=phonenumber.php?payplan=$PaymentPlan");
  
 } else {
 echo "Error: " . $sql . "<br>" . $dbname->error;
