@@ -17,12 +17,13 @@ if (isset($_POST['submit'])) {
 $dbname= new mysqli($servername, $username, $password,$dbname); 
 $result=$dbname->query("SELECT `numberplate` FROM `ownerdetails` WHERE  `numberplate` = '$numberplate'" );
 $row= mysqli_fetch_array($result);
+
 if(mysqli_num_rows($result) == 1){
   echo "Record Found of  ".$row['numberplate'] ;
   header("Refresh: 1; url=paymentplan.php?nplate=$numberplate");
 }else{
   echo "record not found";
-  header("Refresh: 1; url=payment.php");
+  header("Refresh: 1; url=dial.php");
 }
 
 }
