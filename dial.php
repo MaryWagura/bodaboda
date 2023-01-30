@@ -45,7 +45,7 @@ border-radius: 25px;
   
   <input style="margin-left: 2px" type="text" class="form-control" name="numberplate" id="numberplate" placeholder="numberplate" required> <br><br>
 
-<button style="margin-left: 30px" type="submit" class="btn btn-info" name="submit" id="submit" >Submit</button><br>
+<button style="margin-left: 30px" type="submit" class="btn btn-primary" name="submit" id="submit" >Submit</button><br>
  
 
   </div>

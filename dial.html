@@ -1,34 +1,7 @@
-<?php
-
-$nplate1;
-if(isset($_GET['payplan']))
-{ 
-   $np = $_GET['np'];
-  // echo $nplate1;
-  }
-
-
-?>
-
-
-
-<!DOCTYPE html>
+<!DOCTYPE
 <html>
-<head>
-	<title>Login</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
-  <style>
-
+    <head></head>
+    <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
 
 input {
@@ -148,38 +121,28 @@ h1 {
   left: 0;
 }
 
-
-
-</style>
-
- </head>
-
- 
+    </style>
+<title>Dial</title>
 <body>
-<form action="push.php" method="post" id ="thisform">
+  <form action="validation.php" method="post" id ="thisform">
 <div class="container">
    <img src="bike.jpg" alt="Workplace" usemap="#workmap" width="150" height="80">
 
     <div class="brand-title">Boda Boda</div>
     <div class="inputs">
-      <label>Input the phonenumber to pay Below:</label>
-      <input type="text" value="<?php echo $payplan1;?>" name="payplan1" hidden /></td>
-    <input type="text" value="<?php echo $np;?>" name="np" hidden /></td>
-    <input type="text" class="form-control" name="phonenumber" id="phonenumber" placeholder="07" required> <br><br>
-   
-   <button type="submit" class="btn btn-success" name="pay" id="pay" >Pay</button><br>
-   
+      <label>Input your Numberplate Below:</label>
+      <input  type="text" class="form-control" name="numberplate" id="numberplate" placeholder="numberplate" required> <br><br>
+     
+      <button  type="submit" class="btn btn-info" name="submit" id="submit" >Submit</button><br>
     </div>
 
   </div>
 </form>  
 
 
-
-
-
-
-</div>
-
 </body>
+
+
+
+
 </html>
