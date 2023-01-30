@@ -21,7 +21,7 @@ $nplate1;
 if(isset($_GET['nplate']))
 { 
    $nplate1 = $_GET['nplate'];
-   echo $nplate1;
+  // echo $nplate1;
   }
 
 
@@ -31,37 +31,54 @@ if(isset($_GET['nplate']))
 <html>
 <head>
 	<title>Payment Plan</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+
+form {
+  display: inline-block;
+ border: 5px solid black;
+ padding-top :1%;
+ margin-left: 5%;
+
+}
+div{
+  margin-top: 3%;
+  margin-left: 7px;
+}
+
+</style>
+
+
    </head>
 <body>
-	<b><h1>Payment Plan</h1></b>
+  <div id="mydiv">
 <form action="paymentplan.php" method="post">
   <div class="form-group">
   <input type="text" value="<?php echo $nplate1;?>" name="nplate1" hidden /></td>
   <div class="container">
- <label for="numberplate"><h3><b>Choose a payment plan</label></b></h3>
-  <table style="margin-left: 30px;" class="striped-columns border">
-              
+  <b><h2>Choose a payment plan below:</h2></b>
 
- <tbody>
-  
-                    
+  <table style="margin-left: 10px;" class="striped-columns border">
+ <tbody>                   
 <tr>
   <td>Daily</td>
   <td><input type="radio" value="Daily" name="Daily" id="Daily" /></td>
- </tr>
+ </tr><br>
  <tr>
  <td>Weekly</td>
  <td><input type="radio" value="Weekly" name="Daily" id="Weekly" /></td>
-                       
-  </tr>
+</tr><br>
  <tr>
   <td>Monthly</td>
  <td><input type="radio" value="Monthly" name="Daily" id="Monthly" /></td>
  </tr>
 </tbody>
-</table>
- <button type="submit" name="submit" id="submit">Submit</button><br>
+</table><br>
+ <button type="submit" class="btn btn-success" name="submit" id="submit">Submit</button><br>
  
   </div>
  </div>
@@ -77,18 +94,18 @@ $nplate1 = $_POST['nplate1'];
 
 $sql = "UPDATE ownerdetails SET paymentdetails= '$PaymentPlan' WHERE numberplate='$nplate1'";
   if ($dbname->query($sql) === TRUE) {
-    echo "The payment plan has been set ";
-    header("Refresh: 1; url=pay.php");
+    echo '<script>alert("Success! The payment plan has been set")</script>';
+    header("Refresh: 0.5; url=pay.php?payplan=$PaymentPlan");
  
 } else {
 echo "Error: " . $sql . "<br>" . $dbname->error;
-echo " Please try again."; 
-  header('Location:paymentplan.php');
+echo '<script>alert("Failed. Please try again")</script>';
+header("Refresh: 1; url=paymentplan.php");
 }
 }
 
 ?>
-
+</div>
 
 </form>
 </body>

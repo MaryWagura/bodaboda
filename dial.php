@@ -1,29 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Payment</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
+	<title>Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <style>
+
+form {
+ display: inline-block;
+ border: 5px solid black;
+ padding-top :2%;
+ margin-left: 5%;
+
+
+}
+div{
+  margin-top: 5%;
+  margin-left: 7px;
+}
+
+
+
+</style>
+
+ </head>
+
+ 
 <body>
-	<b><h1>Payment</h1></b>
-	<h2>Pay</h2>
-<form action="validation.php" method="post">
+<div id= mydiv>
+<form action="validation.php" method="post" id ="thisform">
   <div class="form-group">
+  <b><h2>Kindly input your numberplate below:</h2></b>
   
   <div class="container">
-    <label for="numberplate"><h3><b>numberplate</label></b></h3>
-			    <input type="text" class="form-control" name="numberplate" id="numberplate" placeholder="numberplate" required> 
-   <!-- <label for="IDNumber"><h3><b>ID Number</label></b></h3>
-			    <input type="text" class="form-control" name="IDNumber" id="IDNumber" placeholder="IDNumber" required> 
-         -->
-         
-    <button type="submit" name="submit" id="submit">Submit</button><br>
-    <!-- <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label> -->
+ <input type="text" class="form-control" name="numberplate" id="numberplate" placeholder="numberplate" required> <br><br>
+   
+<button type="submit" class="btn btn-info" name="submit" id="submit" >Submit</button><br>
+ 
+    
   </div>
   </div>
  
 </form>
+</div>
+
 </body>
 </html>

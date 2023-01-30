@@ -19,11 +19,12 @@ $result=$dbname->query("SELECT `numberplate` FROM `ownerdetails` WHERE  `numberp
 $row= mysqli_fetch_array($result);
 
 if(mysqli_num_rows($result) == 1){
-  echo "Record Found of  ".$row['numberplate'] ;
-  header("Refresh: 1; url=paymentplan.php?nplate=$numberplate");
+  //echo "Record Found of  ".$row['numberplate'] ;
+  echo '<script>alert("Success!")</script>';
+  header("Refresh: 0.3; url=paymentplan.php?nplate=$numberplate");
 }else{
-  echo "record not found";
-  header("Refresh: 1; url=dial.php");
+  echo '<script>alert("Failed. The number plate does not exist!")</script>';
+  header("Refresh: 0.2; url=dial.php");
 }
 
 }
