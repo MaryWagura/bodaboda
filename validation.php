@@ -15,11 +15,12 @@ if (isset($_POST['submit'])) {
 
 
 $dbname= new mysqli($servername, $username, $password,$dbname); 
-$result=$dbname->query("SELECT `numberplate` FROM `ownerdetails` WHERE  `numberplate` = '$numberplate'" );
+$result=$dbname->query("SELECT `numberplate`,`phonenumber` FROM `ownerdetails` WHERE  `numberplate` = '$numberplate'" );
 $row= mysqli_fetch_array($result);
 
+
+
 if(mysqli_num_rows($result) == 1){
-  //echo "Record Found of  ".$row['numberplate'] ;
   echo '<script>alert("Success!")</script>';
   header("Refresh: 0.5; url=paymentplan.php?nplate=$numberplate");
 }else{

@@ -14,9 +14,9 @@ error_reporting(E_ALL);
 
 if (isset($_POST['pay'])) {
 	$phonenumber=$_POST['phonenumber'];
-	$np=$_POST['np'];
+	$numplate=$_POST['numplate'];
 	
-	$result=$dbname->query("SELECT `paymentdetails_id` FROM `ownerdetails` WHERE  `numberplate` = '$np'" );
+	$result=$dbname->query("SELECT `paymentdetails_id` FROM `ownerdetails` WHERE  `numberplate` = '$numplate'" );
 	$row= mysqli_fetch_array($result);
 	$id = $row['paymentdetails_id'];
 	$result=$dbname->query("SELECT `amount` FROM `paymentamount` WHERE  `id` = '$id'" );

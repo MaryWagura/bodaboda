@@ -1,41 +1,41 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
-session_start();
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "bodaboda";
-
-// $numberplate = $_SESSION['numberplate'];
-
-$dbname= new mysqli($servername, $username, $password,$dbname); 
-
-$result=$dbname->query("SELECT * FROM ownerdetails" );
-$rows= mysqli_fetch_array($result);
-
-$nplate1;
-if(isset($_GET['nplate']))
+//to fetch the payment plan chose 
+$Pay;
+if(isset($_GET['payplan']))
 { 
-   $nplate1 = $_GET['nplate'];
-  // echo $nplate1;
+   $Pay = $_GET['payplan'];
+ //  echo $Pay;
   }
+  //to fetch the number plate
+  $numplate;
+  if(isset($_GET['np']))
+  { 
+     $numplate = $_GET['np'];
+     // echo $numplate;
+    } 
+
 
 
 ?>
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Payment Plan</title>
+	<title>Login</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
   <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
@@ -156,69 +156,40 @@ h1 {
   top: 0;
   left: 0;
 }
+
+
+
 </style>
 
+ </head>
 
-   </head>
+ 
 <body>
-<form action="" method="post" id ="thisform">
-<input type="text" value="<?php echo $nplate1;?>" name="nplate1" hidden /></td>
+<form action="push.php" method="post" id ="thisform">
 <div class="container">
    <img src="bike.jpg" alt="Workplace" usemap="#workmap" width="150" height="80">
 
     <div class="brand-title">Boda Boda</div>
     <div class="inputs">
-      <label>Choose a payment plan below:</label>
-      <table style="margin-left: 40px;" class="striped-columns border">
-<tr>
-  <td>Daily</td>
-  <td><input type="radio" value="1" name="Daily" id="Daily" required /></td>
-  </tr>
- <tr>
- <td>Weekly</td>
- <td><input type="radio" value="2" name="Daily" id="Weekly" required /></td>
-
-</tr>
- <tr>
-  <td>Monthly</td>
-  <td><input type="radio" value="3" name="Daily" id="Monthly" required/></td>
- </tr>
-</tbody>
-</table>
+      <label>Input the phonenumber to pay Below:</label>
+      <input type="text" value="<?php echo $Pay;?>" name="Pay"hidden  /></td>
+    <input type="text" value="<?php echo $numplate;?>" name="numplate" hidden  /></td>
+    <input type="text" class="form-control" name="phonenumber" id="phonenumber" placeholder="07" required> <br><br>
+   
+   <button type="submit" class="btn btn-success" name="pay" id="pay" >Pay</button><br>
+   
     </div>
-    <button  type="submit" class="btn btn-info" name="submit" id="submit">Submit</button><br>
-
 
   </div>
 </form>  
- </div>
-  <?php
-  
-  if (isset($_POST['submit'])) {
-$PaymentPlan=$_POST['Daily'];
-$nplate1 = $_POST['nplate1'];
-
-$result=$dbname->query("SELECT `phonenumber` FROM `ownerdetails` WHERE  numberplate = '$nplate1'" );
-$row= mysqli_fetch_array($result);
-$current_number= $row['phonenumber'];
 
 
 
-$sql = "UPDATE ownerdetails SET paymentdetails_id= '$PaymentPlan' WHERE numberplate='$nplate1'";
-  if ($dbname->query($sql) === TRUE) {
-    echo '<script>alert("Success! The payment plan has been set")</script>';
-    header("Refresh: 0.5; url=phoneoption.php?payplan=$PaymentPlan&np=$nplate1&current_num=$current_number");
- 
-} else {
-echo "Error: " . $sql . "<br>" . $dbname->error;
-echo '<script>alert("Failed. Please try again")</script>';
-header("Refresh: 1; url=paymentplan.php");
-}
-}
 
-?>
+
+
+
 </div>
 
-</form>
 </body>
 </html>

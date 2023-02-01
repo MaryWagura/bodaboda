@@ -1,32 +1,58 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-$nplate1;
+session_start();
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "bodaboda";
+
+// $numberplate = $_SESSION['numberplate'];
+
+$dbname= new mysqli($servername, $username, $password,$dbname); 
+
+$result=$dbname->query("SELECT * FROM ownerdetails" );
+$rows= mysqli_fetch_array($result);
+
+//to fetch the payment plan chose 
+$Pay;
 if(isset($_GET['payplan']))
 { 
-   $np = $_GET['np'];
-  // echo $nplate1;
+   $Pay = $_GET['payplan'];
+   //echo $Pay;
   }
+//to fetch the number plate
+  $numplate;
+  if(isset($_GET['np']))
+  { 
+     $numplate = $_GET['np'];
+     // echo $numplate;
+    } 
+
+    //to fetch the current phone number 
+  $phonenumber;
+if(isset($_GET['current_num']))
+{ 
+   $phonenumber = $_GET['current_num'];
+  //  echo $phonenumber;
+  }
+
 
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login</title>
+	<title>Payment Plan</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
   <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
@@ -147,39 +173,66 @@ h1 {
   top: 0;
   left: 0;
 }
-
-
-
 </style>
 
- </head>
 
- 
+   </head>
 <body>
-<form action="push.php" method="post" id ="thisform">
+<form action="" method="post" id ="thisform">
+<input type="text" value="<?php echo $numplate;?>" name="numplate" hidden /></td>
+<input type="text" value="<?php echo $currentnum;?>" name="currentnum" hidden /></td>
+<input type="text" value="<?php echo $payplan1;?>" name="payplan1" hidden /></td>
+<input type="text" value="<?php echo $np;?>" name="np" hidden /></td>
+
 <div class="container">
    <img src="bike.jpg" alt="Workplace" usemap="#workmap" width="150" height="80">
 
     <div class="brand-title">Boda Boda</div>
     <div class="inputs">
-      <label>Input the phonenumber to pay Below:</label>
-      <input type="text" value="<?php echo $payplan1;?>" name="payplan1" hidden /></td>
-    <input type="text" value="<?php echo $np;?>" name="np" hidden /></td>
-    <input type="text" class="form-control" name="phonenumber" id="phonenumber" placeholder="07" required> <br><br>
-   
-   <button type="submit" class="btn btn-success" name="pay" id="pay" >Pay</button><br>
-   
+      <label>Do you wish to pay with the current number? </label>
+      <table style="margin-left: 40px;" class="striped-columns border">
+<tr>
+  <td>Yes</td>
+  <td><input type="radio" value="1" name="Daily" id="Daily" required /></td>
+  </tr>
+ <tr>
+ <td>No </td>
+ <td><input type="radio" value="2" name="Daily" id="Weekly" required /></td>
+</tr>
+ 
+</tbody>
+</table>
     </div>
+    <button  type="submit" class="btn btn-info" name="submit" id="submit">Submit</button><br>
+
 
   </div>
 </form>  
+ </div>
+  <?php
+  
+  if (isset($_POST['submit'])) {
+$PaymentPlan=$_POST['Daily'];
+$numplate = $_POST['numplate'];
 
 
 
+if ($PaymentPlan == 1)
+{
+
+    header("Refresh: 0.5; url=pay.php?payplan=$Pay&np=$numplate&phonenumber=$phonenumber");
+}else 
+{
+    header("Refresh: 0.5; url=new_phonenumber.php?payplan=$Pay&np=$numplate");
+
+}
 
 
+}
 
+?>
 </div>
 
+</form>
 </body>
 </html>
